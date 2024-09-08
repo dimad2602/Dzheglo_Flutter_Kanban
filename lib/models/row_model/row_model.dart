@@ -43,6 +43,20 @@ class RowModel {
     required this.order,
   });
 
+  RowModel copyWith({
+    String? name,
+    int? indicatorToMoId,
+    int? parentId,
+    int? order,
+  }) {
+    return RowModel(
+      name: name ?? this.name,
+      indicatorToMoId: indicatorToMoId ?? this.indicatorToMoId,
+      parentId: parentId ?? this.parentId,
+      order: order ?? this.order,
+    );
+  }
+
   factory RowModel.fromJson(Map<String, dynamic> json) {
     return RowModel(
       name: utf8.decode(json['name'].runes.toList()),

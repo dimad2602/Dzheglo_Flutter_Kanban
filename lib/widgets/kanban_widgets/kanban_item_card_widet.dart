@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class KanbanItemCardWidet extends StatelessWidget {
   final RowModel item;
+  final int index;
   const KanbanItemCardWidet(
-      {super.key, required this.item});
+      {super.key, required this.item, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -16,17 +17,16 @@ class KanbanItemCardWidet extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: ListTile(
-          contentPadding:
-              const EdgeInsets.all(8),
+          contentPadding: const EdgeInsets.all(8),
           tileColor: Colors.white,
           title: Text(
-          item.name,
+            item.name,
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
-          // subtitle: Text(
-          //   'ID: ${item.order} Parent ID: ${item.parentId}',
-          //   style: TextStyle(color: Colors.grey[600]),
-          // ),
+          subtitle: Text(
+            'Parent ID: ${item.parentId}, order: ${item.order}', //ID: ${index} 
+            style: TextStyle(color: Colors.grey[600]),
+          ),
           trailing: Icon(Icons.drag_handle, color: Colors.grey[600]),
         ));
   }

@@ -7,8 +7,7 @@ import 'package:http/http.dart' as http;
 class KanbanRepo implements IKanbanRepo {
   final String token = "48ab34464a5573519725deb5865cc74c";
 
-  final String baseUrl =
-      "https://development.kpi-drive.ru/_api/indicators/get_mo_indicators";
+  final String baseUrl = "https://development.kpi-drive.ru/_api/indicators";
 
   final _mainHeaders = {
     //'Content-type': 'application/json; charset=utf-8',
@@ -20,7 +19,7 @@ class KanbanRepo implements IKanbanRepo {
   @override
   Future<DataModel> postData({Map<String, String>? body}) async {
     try {
-      var response = await http.post(Uri.parse(baseUrl),
+      var response = await http.post(Uri.parse('$baseUrl/get_mo_indicators'),
           headers: _mainHeaders,
           body: body ??
               {
@@ -54,5 +53,49 @@ class KanbanRepo implements IKanbanRepo {
   @override
   List<DataModel> getDataModels() {
     return _rows;
+  }
+
+  @override
+  Future<void> saveData({Map<String, String>? body}) async {
+    try {
+      var response =
+          await http.post(Uri.parse('$baseUrl/save_indicator_instance_field'),
+              headers: _mainHeaders,
+              body: body ??
+                  {
+                    'period_start': '2024-06-01',
+                    'period_end': '2024-06-30',
+                    'period_key': 'month',
+                    'indicator_to_mo_id': '316678',
+                    'field_name': 'parent_id',
+                    'field_value': '311834',
+                    'field_name': 'order',
+                    'field_value': '4',
+                    'auth_user_id': '2',
+                  });
+
+      print('Status Code: ${response.statusCode}');
+      print('Response Headers: ${response.headers}');
+
+      if (response.statusCode == 200) {
+        print('Data posted successfully.');
+      } else {
+        final responseBody = utf8.decode(response.bodyBytes);
+
+        final errorResponse = json.decode(responseBody) as Map<String, dynamic>;
+
+        final errorMessages =
+            errorResponse['MESSAGES'] as Map<String, dynamic>?;
+        final errorList = errorMessages?['error'] as List<dynamic>?;
+
+        final errorMessage = errorList != null && errorList.isNotEmpty
+            ? errorList.join(', ')
+            : 'Неизвестная ошибка';
+
+        throw Exception('Ошибка запроса: $errorMessage');
+      }
+    } catch (e) {
+      throw Exception('Ошибка при отправке данных: $e');
+    }
   }
 }

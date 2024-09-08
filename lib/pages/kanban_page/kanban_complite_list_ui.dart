@@ -82,11 +82,17 @@ _buildItem(RowModel item, int index, bool isLast) {
       child: isLast
           ? Column(
               children: [
-                KanbanItemCardWidet(item: item),
+                KanbanItemCardWidet(
+                  item: item,
+                  index: index,
+                ),
                 const SizedBox(
                   height: 18,
                 )
               ],
             )
-          : KanbanItemCardWidet(item: item));
+          : KanbanItemCardWidet(
+              item: item,
+              index: index,
+            ));
 }

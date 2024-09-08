@@ -24,7 +24,17 @@ mixin _$KanbanEvent {
         kanbanItemReordered,
     required TResult Function(int oldListIndex, int newListIndex)
         kanbanListReordered,
-    required TResult Function() save,
+    required TResult Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)
+        save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,7 +44,17 @@ mixin _$KanbanEvent {
             int newListIndex)?
         kanbanItemReordered,
     TResult? Function(int oldListIndex, int newListIndex)? kanbanListReordered,
-    TResult? Function()? save,
+    TResult? Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)?
+        save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,7 +64,17 @@ mixin _$KanbanEvent {
             int newListIndex)?
         kanbanItemReordered,
     TResult Function(int oldListIndex, int newListIndex)? kanbanListReordered,
-    TResult Function()? save,
+    TResult Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)?
+        save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -143,7 +173,17 @@ class _$StartedImpl implements _Started {
         kanbanItemReordered,
     required TResult Function(int oldListIndex, int newListIndex)
         kanbanListReordered,
-    required TResult Function() save,
+    required TResult Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)
+        save,
   }) {
     return started();
   }
@@ -156,7 +196,17 @@ class _$StartedImpl implements _Started {
             int newListIndex)?
         kanbanItemReordered,
     TResult? Function(int oldListIndex, int newListIndex)? kanbanListReordered,
-    TResult? Function()? save,
+    TResult? Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)?
+        save,
   }) {
     return started?.call();
   }
@@ -169,7 +219,17 @@ class _$StartedImpl implements _Started {
             int newListIndex)?
         kanbanItemReordered,
     TResult Function(int oldListIndex, int newListIndex)? kanbanListReordered,
-    TResult Function()? save,
+    TResult Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)?
+        save,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -329,7 +389,17 @@ class _$KanbanItemReorderedImpl implements _KanbanItemReordered {
         kanbanItemReordered,
     required TResult Function(int oldListIndex, int newListIndex)
         kanbanListReordered,
-    required TResult Function() save,
+    required TResult Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)
+        save,
   }) {
     return kanbanItemReordered(
         oldItemIndex, oldListIndex, newItemIndex, newListIndex);
@@ -343,7 +413,17 @@ class _$KanbanItemReorderedImpl implements _KanbanItemReordered {
             int newListIndex)?
         kanbanItemReordered,
     TResult? Function(int oldListIndex, int newListIndex)? kanbanListReordered,
-    TResult? Function()? save,
+    TResult? Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)?
+        save,
   }) {
     return kanbanItemReordered?.call(
         oldItemIndex, oldListIndex, newItemIndex, newListIndex);
@@ -357,7 +437,17 @@ class _$KanbanItemReorderedImpl implements _KanbanItemReordered {
             int newListIndex)?
         kanbanItemReordered,
     TResult Function(int oldListIndex, int newListIndex)? kanbanListReordered,
-    TResult Function()? save,
+    TResult Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)?
+        save,
     required TResult orElse(),
   }) {
     if (kanbanItemReordered != null) {
@@ -510,7 +600,17 @@ class _$KanbanListReorderedImpl implements _KanbanListReordered {
         kanbanItemReordered,
     required TResult Function(int oldListIndex, int newListIndex)
         kanbanListReordered,
-    required TResult Function() save,
+    required TResult Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)
+        save,
   }) {
     return kanbanListReordered(oldListIndex, newListIndex);
   }
@@ -523,7 +623,17 @@ class _$KanbanListReorderedImpl implements _KanbanListReordered {
             int newListIndex)?
         kanbanItemReordered,
     TResult? Function(int oldListIndex, int newListIndex)? kanbanListReordered,
-    TResult? Function()? save,
+    TResult? Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)?
+        save,
   }) {
     return kanbanListReordered?.call(oldListIndex, newListIndex);
   }
@@ -536,7 +646,17 @@ class _$KanbanListReorderedImpl implements _KanbanListReordered {
             int newListIndex)?
         kanbanItemReordered,
     TResult Function(int oldListIndex, int newListIndex)? kanbanListReordered,
-    TResult Function()? save,
+    TResult Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)?
+        save,
     required TResult orElse(),
   }) {
     if (kanbanListReordered != null) {
@@ -603,6 +723,17 @@ abstract class _$$SaveImplCopyWith<$Res> {
   factory _$$SaveImplCopyWith(
           _$SaveImpl value, $Res Function(_$SaveImpl) then) =
       __$$SaveImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String periodStart,
+      String periodEnd,
+      String periodKey,
+      String indicatorToMoId,
+      String fieldName1,
+      String fieldValue1,
+      String fieldName2,
+      String fieldValue2,
+      String authUserId});
 }
 
 /// @nodoc
@@ -614,26 +745,143 @@ class __$$SaveImplCopyWithImpl<$Res>
 
   /// Create a copy of KanbanEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? periodStart = null,
+    Object? periodEnd = null,
+    Object? periodKey = null,
+    Object? indicatorToMoId = null,
+    Object? fieldName1 = null,
+    Object? fieldValue1 = null,
+    Object? fieldName2 = null,
+    Object? fieldValue2 = null,
+    Object? authUserId = null,
+  }) {
+    return _then(_$SaveImpl(
+      periodStart: null == periodStart
+          ? _value.periodStart
+          : periodStart // ignore: cast_nullable_to_non_nullable
+              as String,
+      periodEnd: null == periodEnd
+          ? _value.periodEnd
+          : periodEnd // ignore: cast_nullable_to_non_nullable
+              as String,
+      periodKey: null == periodKey
+          ? _value.periodKey
+          : periodKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      indicatorToMoId: null == indicatorToMoId
+          ? _value.indicatorToMoId
+          : indicatorToMoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      fieldName1: null == fieldName1
+          ? _value.fieldName1
+          : fieldName1 // ignore: cast_nullable_to_non_nullable
+              as String,
+      fieldValue1: null == fieldValue1
+          ? _value.fieldValue1
+          : fieldValue1 // ignore: cast_nullable_to_non_nullable
+              as String,
+      fieldName2: null == fieldName2
+          ? _value.fieldName2
+          : fieldName2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      fieldValue2: null == fieldValue2
+          ? _value.fieldValue2
+          : fieldValue2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      authUserId: null == authUserId
+          ? _value.authUserId
+          : authUserId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SaveImpl implements _Save {
-  const _$SaveImpl();
+  const _$SaveImpl(
+      {required this.periodStart,
+      required this.periodEnd,
+      required this.periodKey,
+      required this.indicatorToMoId,
+      required this.fieldName1,
+      required this.fieldValue1,
+      required this.fieldName2,
+      required this.fieldValue2,
+      required this.authUserId});
+
+  @override
+  final String periodStart;
+  @override
+  final String periodEnd;
+  @override
+  final String periodKey;
+  @override
+  final String indicatorToMoId;
+  @override
+  final String fieldName1;
+  @override
+  final String fieldValue1;
+  @override
+  final String fieldName2;
+  @override
+  final String fieldValue2;
+  @override
+  final String authUserId;
 
   @override
   String toString() {
-    return 'KanbanEvent.save()';
+    return 'KanbanEvent.save(periodStart: $periodStart, periodEnd: $periodEnd, periodKey: $periodKey, indicatorToMoId: $indicatorToMoId, fieldName1: $fieldName1, fieldValue1: $fieldValue1, fieldName2: $fieldName2, fieldValue2: $fieldValue2, authUserId: $authUserId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SaveImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SaveImpl &&
+            (identical(other.periodStart, periodStart) ||
+                other.periodStart == periodStart) &&
+            (identical(other.periodEnd, periodEnd) ||
+                other.periodEnd == periodEnd) &&
+            (identical(other.periodKey, periodKey) ||
+                other.periodKey == periodKey) &&
+            (identical(other.indicatorToMoId, indicatorToMoId) ||
+                other.indicatorToMoId == indicatorToMoId) &&
+            (identical(other.fieldName1, fieldName1) ||
+                other.fieldName1 == fieldName1) &&
+            (identical(other.fieldValue1, fieldValue1) ||
+                other.fieldValue1 == fieldValue1) &&
+            (identical(other.fieldName2, fieldName2) ||
+                other.fieldName2 == fieldName2) &&
+            (identical(other.fieldValue2, fieldValue2) ||
+                other.fieldValue2 == fieldValue2) &&
+            (identical(other.authUserId, authUserId) ||
+                other.authUserId == authUserId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      periodStart,
+      periodEnd,
+      periodKey,
+      indicatorToMoId,
+      fieldName1,
+      fieldValue1,
+      fieldName2,
+      fieldValue2,
+      authUserId);
+
+  /// Create a copy of KanbanEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SaveImplCopyWith<_$SaveImpl> get copyWith =>
+      __$$SaveImplCopyWithImpl<_$SaveImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -644,9 +892,20 @@ class _$SaveImpl implements _Save {
         kanbanItemReordered,
     required TResult Function(int oldListIndex, int newListIndex)
         kanbanListReordered,
-    required TResult Function() save,
+    required TResult Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)
+        save,
   }) {
-    return save();
+    return save(periodStart, periodEnd, periodKey, indicatorToMoId, fieldName1,
+        fieldValue1, fieldName2, fieldValue2, authUserId);
   }
 
   @override
@@ -657,9 +916,20 @@ class _$SaveImpl implements _Save {
             int newListIndex)?
         kanbanItemReordered,
     TResult? Function(int oldListIndex, int newListIndex)? kanbanListReordered,
-    TResult? Function()? save,
+    TResult? Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)?
+        save,
   }) {
-    return save?.call();
+    return save?.call(periodStart, periodEnd, periodKey, indicatorToMoId,
+        fieldName1, fieldValue1, fieldName2, fieldValue2, authUserId);
   }
 
   @override
@@ -670,11 +940,22 @@ class _$SaveImpl implements _Save {
             int newListIndex)?
         kanbanItemReordered,
     TResult Function(int oldListIndex, int newListIndex)? kanbanListReordered,
-    TResult Function()? save,
+    TResult Function(
+            String periodStart,
+            String periodEnd,
+            String periodKey,
+            String indicatorToMoId,
+            String fieldName1,
+            String fieldValue1,
+            String fieldName2,
+            String fieldValue2,
+            String authUserId)?
+        save,
     required TResult orElse(),
   }) {
     if (save != null) {
-      return save();
+      return save(periodStart, periodEnd, periodKey, indicatorToMoId,
+          fieldName1, fieldValue1, fieldName2, fieldValue2, authUserId);
     }
     return orElse();
   }
@@ -718,7 +999,32 @@ class _$SaveImpl implements _Save {
 }
 
 abstract class _Save implements KanbanEvent {
-  const factory _Save() = _$SaveImpl;
+  const factory _Save(
+      {required final String periodStart,
+      required final String periodEnd,
+      required final String periodKey,
+      required final String indicatorToMoId,
+      required final String fieldName1,
+      required final String fieldValue1,
+      required final String fieldName2,
+      required final String fieldValue2,
+      required final String authUserId}) = _$SaveImpl;
+
+  String get periodStart;
+  String get periodEnd;
+  String get periodKey;
+  String get indicatorToMoId;
+  String get fieldName1;
+  String get fieldValue1;
+  String get fieldName2;
+  String get fieldValue2;
+  String get authUserId;
+
+  /// Create a copy of KanbanEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SaveImplCopyWith<_$SaveImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

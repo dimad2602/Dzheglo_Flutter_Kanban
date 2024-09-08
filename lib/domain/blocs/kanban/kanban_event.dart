@@ -15,5 +15,15 @@ class KanbanEvent with _$KanbanEvent {
     required int newListIndex,
   }) = _KanbanListReordered;
 
-  const factory KanbanEvent.save() = _Save;
+  const factory KanbanEvent.save({
+    required String periodStart,
+    required String periodEnd,
+    required String periodKey,
+    required String indicatorToMoId,
+    required String fieldName1,
+    required String fieldValue1,
+    required String fieldName2,
+    required String fieldValue2,
+    required String authUserId,
+  }) = _Save;
 }
