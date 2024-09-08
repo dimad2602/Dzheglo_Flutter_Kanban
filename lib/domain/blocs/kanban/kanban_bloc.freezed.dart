@@ -111,8 +111,8 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl extends _Started {
-  const _$StartedImpl() : super._();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -204,9 +204,8 @@ class _$StartedImpl extends _Started {
   }
 }
 
-abstract class _Started extends KanbanEvent {
+abstract class _Started implements KanbanEvent {
   const factory _Started() = _$StartedImpl;
-  const _Started._() : super._();
 }
 
 /// @nodoc
@@ -260,13 +259,12 @@ class __$$KanbanItemReorderedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KanbanItemReorderedImpl extends _KanbanItemReordered {
+class _$KanbanItemReorderedImpl implements _KanbanItemReordered {
   const _$KanbanItemReorderedImpl(
       {required this.oldItemIndex,
       required this.oldListIndex,
       required this.newItemIndex,
-      required this.newListIndex})
-      : super._();
+      required this.newListIndex});
 
   @override
   final int oldItemIndex;
@@ -389,13 +387,12 @@ class _$KanbanItemReorderedImpl extends _KanbanItemReordered {
   }
 }
 
-abstract class _KanbanItemReordered extends KanbanEvent {
+abstract class _KanbanItemReordered implements KanbanEvent {
   const factory _KanbanItemReordered(
       {required final int oldItemIndex,
       required final int oldListIndex,
       required final int newItemIndex,
       required final int newListIndex}) = _$KanbanItemReorderedImpl;
-  const _KanbanItemReordered._() : super._();
 
   int get oldItemIndex;
   int get oldListIndex;
@@ -449,10 +446,9 @@ class __$$KanbanListReorderedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$KanbanListReorderedImpl extends _KanbanListReordered {
+class _$KanbanListReorderedImpl implements _KanbanListReordered {
   const _$KanbanListReorderedImpl(
-      {required this.oldListIndex, required this.newListIndex})
-      : super._();
+      {required this.oldListIndex, required this.newListIndex});
 
   @override
   final int oldListIndex;
@@ -563,11 +559,10 @@ class _$KanbanListReorderedImpl extends _KanbanListReordered {
   }
 }
 
-abstract class _KanbanListReordered extends KanbanEvent {
+abstract class _KanbanListReordered implements KanbanEvent {
   const factory _KanbanListReordered(
       {required final int oldListIndex,
       required final int newListIndex}) = _$KanbanListReorderedImpl;
-  const _KanbanListReordered._() : super._();
 
   int get oldListIndex;
   int get newListIndex;
@@ -584,53 +579,50 @@ mixin _$KanbanState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String errorMessage) error,
     required TResult Function() loading,
-    required TResult Function(List<RowModel> rows, List<InnerList> innerLists)
-        kanbanBoard,
+    required TResult Function(List<InnerList> innerList) kanbanBoard,
+    required TResult Function(String errorMessage) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String errorMessage)? error,
     TResult? Function()? loading,
-    TResult? Function(List<RowModel> rows, List<InnerList> innerLists)?
-        kanbanBoard,
+    TResult? Function(List<InnerList> innerList)? kanbanBoard,
+    TResult? Function(String errorMessage)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String errorMessage)? error,
     TResult Function()? loading,
-    TResult Function(List<RowModel> rows, List<InnerList> innerLists)?
-        kanbanBoard,
+    TResult Function(List<InnerList> innerList)? kanbanBoard,
+    TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Rows value) kanbanBoard,
+    required TResult Function(_KanbanBoard value) kanbanBoard,
+    required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Rows value)? kanbanBoard,
+    TResult? Function(_KanbanBoard value)? kanbanBoard,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Rows value)? kanbanBoard,
+    TResult Function(_KanbanBoard value)? kanbanBoard,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -699,10 +691,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String errorMessage) error,
     required TResult Function() loading,
-    required TResult Function(List<RowModel> rows, List<InnerList> innerLists)
-        kanbanBoard,
+    required TResult Function(List<InnerList> innerList) kanbanBoard,
+    required TResult Function(String errorMessage) error,
   }) {
     return initial();
   }
@@ -711,10 +702,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String errorMessage)? error,
     TResult? Function()? loading,
-    TResult? Function(List<RowModel> rows, List<InnerList> innerLists)?
-        kanbanBoard,
+    TResult? Function(List<InnerList> innerList)? kanbanBoard,
+    TResult? Function(String errorMessage)? error,
   }) {
     return initial?.call();
   }
@@ -723,10 +713,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String errorMessage)? error,
     TResult Function()? loading,
-    TResult Function(List<RowModel> rows, List<InnerList> innerLists)?
-        kanbanBoard,
+    TResult Function(List<InnerList> innerList)? kanbanBoard,
+    TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -739,9 +728,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Rows value) kanbanBoard,
+    required TResult Function(_KanbanBoard value) kanbanBoard,
+    required TResult Function(_Error value) error,
   }) {
     return initial(this);
   }
@@ -750,9 +739,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Rows value)? kanbanBoard,
+    TResult? Function(_KanbanBoard value)? kanbanBoard,
+    TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -761,9 +750,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Rows value)? kanbanBoard,
+    TResult Function(_KanbanBoard value)? kanbanBoard,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -776,6 +765,287 @@ class _$InitialImpl extends _Initial {
 abstract class _Initial extends KanbanState {
   const factory _Initial() = _$InitialImpl;
   const _Initial._() : super._();
+}
+
+/// @nodoc
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$KanbanStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of KanbanState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl() : super._();
+
+  @override
+  String toString() {
+    return 'KanbanState.loading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<InnerList> innerList) kanbanBoard,
+    required TResult Function(String errorMessage) error,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<InnerList> innerList)? kanbanBoard,
+    TResult? Function(String errorMessage)? error,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<InnerList> innerList)? kanbanBoard,
+    TResult Function(String errorMessage)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_KanbanBoard value) kanbanBoard,
+    required TResult Function(_Error value) error,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_KanbanBoard value)? kanbanBoard,
+    TResult? Function(_Error value)? error,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_KanbanBoard value)? kanbanBoard,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading extends KanbanState {
+  const factory _Loading() = _$LoadingImpl;
+  const _Loading._() : super._();
+}
+
+/// @nodoc
+abstract class _$$KanbanBoardImplCopyWith<$Res> {
+  factory _$$KanbanBoardImplCopyWith(
+          _$KanbanBoardImpl value, $Res Function(_$KanbanBoardImpl) then) =
+      __$$KanbanBoardImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<InnerList> innerList});
+}
+
+/// @nodoc
+class __$$KanbanBoardImplCopyWithImpl<$Res>
+    extends _$KanbanStateCopyWithImpl<$Res, _$KanbanBoardImpl>
+    implements _$$KanbanBoardImplCopyWith<$Res> {
+  __$$KanbanBoardImplCopyWithImpl(
+      _$KanbanBoardImpl _value, $Res Function(_$KanbanBoardImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of KanbanState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? innerList = null,
+  }) {
+    return _then(_$KanbanBoardImpl(
+      innerList: null == innerList
+          ? _value._innerList
+          : innerList // ignore: cast_nullable_to_non_nullable
+              as List<InnerList>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$KanbanBoardImpl extends _KanbanBoard {
+  const _$KanbanBoardImpl({required final List<InnerList> innerList})
+      : _innerList = innerList,
+        super._();
+
+  final List<InnerList> _innerList;
+  @override
+  List<InnerList> get innerList {
+    if (_innerList is EqualUnmodifiableListView) return _innerList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_innerList);
+  }
+
+  @override
+  String toString() {
+    return 'KanbanState.kanbanBoard(innerList: $innerList)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$KanbanBoardImpl &&
+            const DeepCollectionEquality()
+                .equals(other._innerList, _innerList));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_innerList));
+
+  /// Create a copy of KanbanState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$KanbanBoardImplCopyWith<_$KanbanBoardImpl> get copyWith =>
+      __$$KanbanBoardImplCopyWithImpl<_$KanbanBoardImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<InnerList> innerList) kanbanBoard,
+    required TResult Function(String errorMessage) error,
+  }) {
+    return kanbanBoard(innerList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<InnerList> innerList)? kanbanBoard,
+    TResult? Function(String errorMessage)? error,
+  }) {
+    return kanbanBoard?.call(innerList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<InnerList> innerList)? kanbanBoard,
+    TResult Function(String errorMessage)? error,
+    required TResult orElse(),
+  }) {
+    if (kanbanBoard != null) {
+      return kanbanBoard(innerList);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_KanbanBoard value) kanbanBoard,
+    required TResult Function(_Error value) error,
+  }) {
+    return kanbanBoard(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_KanbanBoard value)? kanbanBoard,
+    TResult? Function(_Error value)? error,
+  }) {
+    return kanbanBoard?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_KanbanBoard value)? kanbanBoard,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (kanbanBoard != null) {
+      return kanbanBoard(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _KanbanBoard extends KanbanState {
+  const factory _KanbanBoard({required final List<InnerList> innerList}) =
+      _$KanbanBoardImpl;
+  const _KanbanBoard._() : super._();
+
+  List<InnerList> get innerList;
+
+  /// Create a copy of KanbanState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$KanbanBoardImplCopyWith<_$KanbanBoardImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -848,10 +1118,9 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String errorMessage) error,
     required TResult Function() loading,
-    required TResult Function(List<RowModel> rows, List<InnerList> innerLists)
-        kanbanBoard,
+    required TResult Function(List<InnerList> innerList) kanbanBoard,
+    required TResult Function(String errorMessage) error,
   }) {
     return error(errorMessage);
   }
@@ -860,10 +1129,9 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String errorMessage)? error,
     TResult? Function()? loading,
-    TResult? Function(List<RowModel> rows, List<InnerList> innerLists)?
-        kanbanBoard,
+    TResult? Function(List<InnerList> innerList)? kanbanBoard,
+    TResult? Function(String errorMessage)? error,
   }) {
     return error?.call(errorMessage);
   }
@@ -872,10 +1140,9 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String errorMessage)? error,
     TResult Function()? loading,
-    TResult Function(List<RowModel> rows, List<InnerList> innerLists)?
-        kanbanBoard,
+    TResult Function(List<InnerList> innerList)? kanbanBoard,
+    TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -888,9 +1155,9 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Rows value) kanbanBoard,
+    required TResult Function(_KanbanBoard value) kanbanBoard,
+    required TResult Function(_Error value) error,
   }) {
     return error(this);
   }
@@ -899,9 +1166,9 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Rows value)? kanbanBoard,
+    TResult? Function(_KanbanBoard value)? kanbanBoard,
+    TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
   }
@@ -910,9 +1177,9 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Rows value)? kanbanBoard,
+    TResult Function(_KanbanBoard value)? kanbanBoard,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -932,312 +1199,5 @@ abstract class _Error extends KanbanState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$KanbanStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of KanbanState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$LoadingImpl extends _Loading {
-  const _$LoadingImpl() : super._();
-
-  @override
-  String toString() {
-    return 'KanbanState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String errorMessage) error,
-    required TResult Function() loading,
-    required TResult Function(List<RowModel> rows, List<InnerList> innerLists)
-        kanbanBoard,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String errorMessage)? error,
-    TResult? Function()? loading,
-    TResult? Function(List<RowModel> rows, List<InnerList> innerLists)?
-        kanbanBoard,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String errorMessage)? error,
-    TResult Function()? loading,
-    TResult Function(List<RowModel> rows, List<InnerList> innerLists)?
-        kanbanBoard,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Rows value) kanbanBoard,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Rows value)? kanbanBoard,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Rows value)? kanbanBoard,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading extends KanbanState {
-  const factory _Loading() = _$LoadingImpl;
-  const _Loading._() : super._();
-}
-
-/// @nodoc
-abstract class _$$RowsImplCopyWith<$Res> {
-  factory _$$RowsImplCopyWith(
-          _$RowsImpl value, $Res Function(_$RowsImpl) then) =
-      __$$RowsImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<RowModel> rows, List<InnerList> innerLists});
-}
-
-/// @nodoc
-class __$$RowsImplCopyWithImpl<$Res>
-    extends _$KanbanStateCopyWithImpl<$Res, _$RowsImpl>
-    implements _$$RowsImplCopyWith<$Res> {
-  __$$RowsImplCopyWithImpl(_$RowsImpl _value, $Res Function(_$RowsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of KanbanState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? rows = null,
-    Object? innerLists = null,
-  }) {
-    return _then(_$RowsImpl(
-      rows: null == rows
-          ? _value._rows
-          : rows // ignore: cast_nullable_to_non_nullable
-              as List<RowModel>,
-      innerLists: null == innerLists
-          ? _value._innerLists
-          : innerLists // ignore: cast_nullable_to_non_nullable
-              as List<InnerList>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$RowsImpl extends _Rows {
-  const _$RowsImpl(
-      {required final List<RowModel> rows,
-      required final List<InnerList> innerLists})
-      : _rows = rows,
-        _innerLists = innerLists,
-        super._();
-
-  final List<RowModel> _rows;
-  @override
-  List<RowModel> get rows {
-    if (_rows is EqualUnmodifiableListView) return _rows;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_rows);
-  }
-
-  final List<InnerList> _innerLists;
-  @override
-  List<InnerList> get innerLists {
-    if (_innerLists is EqualUnmodifiableListView) return _innerLists;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_innerLists);
-  }
-
-  @override
-  String toString() {
-    return 'KanbanState.kanbanBoard(rows: $rows, innerLists: $innerLists)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RowsImpl &&
-            const DeepCollectionEquality().equals(other._rows, _rows) &&
-            const DeepCollectionEquality()
-                .equals(other._innerLists, _innerLists));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_rows),
-      const DeepCollectionEquality().hash(_innerLists));
-
-  /// Create a copy of KanbanState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RowsImplCopyWith<_$RowsImpl> get copyWith =>
-      __$$RowsImplCopyWithImpl<_$RowsImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String errorMessage) error,
-    required TResult Function() loading,
-    required TResult Function(List<RowModel> rows, List<InnerList> innerLists)
-        kanbanBoard,
-  }) {
-    return kanbanBoard(rows, innerLists);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String errorMessage)? error,
-    TResult? Function()? loading,
-    TResult? Function(List<RowModel> rows, List<InnerList> innerLists)?
-        kanbanBoard,
-  }) {
-    return kanbanBoard?.call(rows, innerLists);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String errorMessage)? error,
-    TResult Function()? loading,
-    TResult Function(List<RowModel> rows, List<InnerList> innerLists)?
-        kanbanBoard,
-    required TResult orElse(),
-  }) {
-    if (kanbanBoard != null) {
-      return kanbanBoard(rows, innerLists);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Rows value) kanbanBoard,
-  }) {
-    return kanbanBoard(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Rows value)? kanbanBoard,
-  }) {
-    return kanbanBoard?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Rows value)? kanbanBoard,
-    required TResult orElse(),
-  }) {
-    if (kanbanBoard != null) {
-      return kanbanBoard(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Rows extends KanbanState {
-  const factory _Rows(
-      {required final List<RowModel> rows,
-      required final List<InnerList> innerLists}) = _$RowsImpl;
-  const _Rows._() : super._();
-
-  List<RowModel> get rows;
-  List<InnerList> get innerLists;
-
-  /// Create a copy of KanbanState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RowsImplCopyWith<_$RowsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
