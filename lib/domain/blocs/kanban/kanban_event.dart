@@ -14,4 +14,6 @@ class KanbanEvent with _$KanbanEvent {
     required int oldListIndex,
     required int newListIndex,
   }) = _KanbanListReordered;
+
+  const factory KanbanEvent.save() = _Save;
 }

@@ -1,11 +1,12 @@
 import 'package:drag_and_drop_lists/drag_and_drop_lists.dart';
 import 'package:dzheglo_flutter_kanban/domain/blocs/kanban/kanban_bloc.dart';
+import 'package:dzheglo_flutter_kanban/models/inner_list_model/inner_list_model.dart';
 import 'package:dzheglo_flutter_kanban/models/row_model/row_model.dart';
-import 'package:dzheglo_flutter_kanban/pages/kanban_page/kanvan_page.dart';
+import 'package:dzheglo_flutter_kanban/widgets/kanban_widgets/kanban_item_card_widet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-Widget kanbanCompliteUi(BuildContext context, List<InnerList> innerLists) {
+Widget kanbanCompleteUi(BuildContext context, List<InnerListModel> innerLists) {
   return DragAndDropLists(
     children: List.generate(
         innerLists.length, (index) => _buildList(context, index, innerLists)),
@@ -24,55 +25,68 @@ Widget kanbanCompliteUi(BuildContext context, List<InnerList> innerLists) {
           ));
     },
     axis: Axis.horizontal,
-    listWidth: 300,
-    listDraggingWidth: 300,
+    listWidth: 350,
+    listDraggingWidth: 350,
     listDecoration: BoxDecoration(
-      color: Colors.grey[200],
-      borderRadius: const BorderRadius.all(Radius.circular(7.0)),
-      boxShadow: const <BoxShadow>[
+      color: Colors.blueGrey[50],
+      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      boxShadow: const [
         BoxShadow(
-          color: Colors.black45,
-          spreadRadius: 3.0,
-          blurRadius: 6.0,
-          offset: Offset(2, 3),
+          color: Colors.black26,
+          spreadRadius: 2.0,
+          blurRadius: 8.0,
+          offset: Offset(2, 4),
         ),
       ],
     ),
-    listPadding: const EdgeInsets.all(8.0),
+    listPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
   );
 }
 
-
-_buildList(BuildContext context, int outerIndex, List<InnerList> innerLists) {
+_buildList(
+    BuildContext context, int outerIndex, List<InnerListModel> innerLists) {
   final innerList = innerLists[outerIndex];
   return DragAndDropList(
     header: Row(
-      children: <Widget>[
+      children: [
         Expanded(
           child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(7.0)),
-              color: Colors.pink,
+            decoration: BoxDecoration(
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(7.0)),
+              color: Colors.blue[700],
             ),
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
             child: Text(
               innerList.name,
-              style: Theme.of(context).primaryTextTheme.titleLarge,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ),
         ),
       ],
     ),
-    children: List.generate(innerList.children.length,
-        (index) => _buildItem(innerList.children[index])),
+    children: List.generate(
+      innerList.children.length,
+      (index) => index + 1 != innerList.children.length
+          ? _buildItem(innerList.children[index], index + 1, false)
+          : _buildItem(innerList.children[index], index + 1, true),
+    ),
   );
 }
 
-_buildItem(RowModel item) {
+_buildItem(RowModel item, int index, bool isLast) {
   return DragAndDropItem(
-    child: ListTile(
-      title: Text(item.name),
-      subtitle: Text('ID: ${item.indicatorToMoId} Parent ID: ${item.parentId}'),
-    ),
-  );
+      child: isLast
+          ? Column(
+              children: [
+                KanbanItemCardWidet(item: item),
+                const SizedBox(
+                  height: 18,
+                )
+              ],
+            )
+          : KanbanItemCardWidet(item: item));
 }

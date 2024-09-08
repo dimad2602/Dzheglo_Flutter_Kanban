@@ -24,6 +24,7 @@ mixin _$KanbanEvent {
         kanbanItemReordered,
     required TResult Function(int oldListIndex, int newListIndex)
         kanbanListReordered,
+    required TResult Function() save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,6 +34,7 @@ mixin _$KanbanEvent {
             int newListIndex)?
         kanbanItemReordered,
     TResult? Function(int oldListIndex, int newListIndex)? kanbanListReordered,
+    TResult? Function()? save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +44,7 @@ mixin _$KanbanEvent {
             int newListIndex)?
         kanbanItemReordered,
     TResult Function(int oldListIndex, int newListIndex)? kanbanListReordered,
+    TResult Function()? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,6 +53,7 @@ mixin _$KanbanEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_KanbanItemReordered value) kanbanItemReordered,
     required TResult Function(_KanbanListReordered value) kanbanListReordered,
+    required TResult Function(_Save value) save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +61,7 @@ mixin _$KanbanEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_KanbanItemReordered value)? kanbanItemReordered,
     TResult? Function(_KanbanListReordered value)? kanbanListReordered,
+    TResult? Function(_Save value)? save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$KanbanEvent {
     TResult Function(_Started value)? started,
     TResult Function(_KanbanItemReordered value)? kanbanItemReordered,
     TResult Function(_KanbanListReordered value)? kanbanListReordered,
+    TResult Function(_Save value)? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -137,6 +143,7 @@ class _$StartedImpl implements _Started {
         kanbanItemReordered,
     required TResult Function(int oldListIndex, int newListIndex)
         kanbanListReordered,
+    required TResult Function() save,
   }) {
     return started();
   }
@@ -149,6 +156,7 @@ class _$StartedImpl implements _Started {
             int newListIndex)?
         kanbanItemReordered,
     TResult? Function(int oldListIndex, int newListIndex)? kanbanListReordered,
+    TResult? Function()? save,
   }) {
     return started?.call();
   }
@@ -161,6 +169,7 @@ class _$StartedImpl implements _Started {
             int newListIndex)?
         kanbanItemReordered,
     TResult Function(int oldListIndex, int newListIndex)? kanbanListReordered,
+    TResult Function()? save,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -175,6 +184,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_KanbanItemReordered value) kanbanItemReordered,
     required TResult Function(_KanbanListReordered value) kanbanListReordered,
+    required TResult Function(_Save value) save,
   }) {
     return started(this);
   }
@@ -185,6 +195,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_KanbanItemReordered value)? kanbanItemReordered,
     TResult? Function(_KanbanListReordered value)? kanbanListReordered,
+    TResult? Function(_Save value)? save,
   }) {
     return started?.call(this);
   }
@@ -195,6 +206,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_KanbanItemReordered value)? kanbanItemReordered,
     TResult Function(_KanbanListReordered value)? kanbanListReordered,
+    TResult Function(_Save value)? save,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -317,6 +329,7 @@ class _$KanbanItemReorderedImpl implements _KanbanItemReordered {
         kanbanItemReordered,
     required TResult Function(int oldListIndex, int newListIndex)
         kanbanListReordered,
+    required TResult Function() save,
   }) {
     return kanbanItemReordered(
         oldItemIndex, oldListIndex, newItemIndex, newListIndex);
@@ -330,6 +343,7 @@ class _$KanbanItemReorderedImpl implements _KanbanItemReordered {
             int newListIndex)?
         kanbanItemReordered,
     TResult? Function(int oldListIndex, int newListIndex)? kanbanListReordered,
+    TResult? Function()? save,
   }) {
     return kanbanItemReordered?.call(
         oldItemIndex, oldListIndex, newItemIndex, newListIndex);
@@ -343,6 +357,7 @@ class _$KanbanItemReorderedImpl implements _KanbanItemReordered {
             int newListIndex)?
         kanbanItemReordered,
     TResult Function(int oldListIndex, int newListIndex)? kanbanListReordered,
+    TResult Function()? save,
     required TResult orElse(),
   }) {
     if (kanbanItemReordered != null) {
@@ -358,6 +373,7 @@ class _$KanbanItemReorderedImpl implements _KanbanItemReordered {
     required TResult Function(_Started value) started,
     required TResult Function(_KanbanItemReordered value) kanbanItemReordered,
     required TResult Function(_KanbanListReordered value) kanbanListReordered,
+    required TResult Function(_Save value) save,
   }) {
     return kanbanItemReordered(this);
   }
@@ -368,6 +384,7 @@ class _$KanbanItemReorderedImpl implements _KanbanItemReordered {
     TResult? Function(_Started value)? started,
     TResult? Function(_KanbanItemReordered value)? kanbanItemReordered,
     TResult? Function(_KanbanListReordered value)? kanbanListReordered,
+    TResult? Function(_Save value)? save,
   }) {
     return kanbanItemReordered?.call(this);
   }
@@ -378,6 +395,7 @@ class _$KanbanItemReorderedImpl implements _KanbanItemReordered {
     TResult Function(_Started value)? started,
     TResult Function(_KanbanItemReordered value)? kanbanItemReordered,
     TResult Function(_KanbanListReordered value)? kanbanListReordered,
+    TResult Function(_Save value)? save,
     required TResult orElse(),
   }) {
     if (kanbanItemReordered != null) {
@@ -492,6 +510,7 @@ class _$KanbanListReorderedImpl implements _KanbanListReordered {
         kanbanItemReordered,
     required TResult Function(int oldListIndex, int newListIndex)
         kanbanListReordered,
+    required TResult Function() save,
   }) {
     return kanbanListReordered(oldListIndex, newListIndex);
   }
@@ -504,6 +523,7 @@ class _$KanbanListReorderedImpl implements _KanbanListReordered {
             int newListIndex)?
         kanbanItemReordered,
     TResult? Function(int oldListIndex, int newListIndex)? kanbanListReordered,
+    TResult? Function()? save,
   }) {
     return kanbanListReordered?.call(oldListIndex, newListIndex);
   }
@@ -516,6 +536,7 @@ class _$KanbanListReorderedImpl implements _KanbanListReordered {
             int newListIndex)?
         kanbanItemReordered,
     TResult Function(int oldListIndex, int newListIndex)? kanbanListReordered,
+    TResult Function()? save,
     required TResult orElse(),
   }) {
     if (kanbanListReordered != null) {
@@ -530,6 +551,7 @@ class _$KanbanListReorderedImpl implements _KanbanListReordered {
     required TResult Function(_Started value) started,
     required TResult Function(_KanbanItemReordered value) kanbanItemReordered,
     required TResult Function(_KanbanListReordered value) kanbanListReordered,
+    required TResult Function(_Save value) save,
   }) {
     return kanbanListReordered(this);
   }
@@ -540,6 +562,7 @@ class _$KanbanListReorderedImpl implements _KanbanListReordered {
     TResult? Function(_Started value)? started,
     TResult? Function(_KanbanItemReordered value)? kanbanItemReordered,
     TResult? Function(_KanbanListReordered value)? kanbanListReordered,
+    TResult? Function(_Save value)? save,
   }) {
     return kanbanListReordered?.call(this);
   }
@@ -550,6 +573,7 @@ class _$KanbanListReorderedImpl implements _KanbanListReordered {
     TResult Function(_Started value)? started,
     TResult Function(_KanbanItemReordered value)? kanbanItemReordered,
     TResult Function(_KanbanListReordered value)? kanbanListReordered,
+    TResult Function(_Save value)? save,
     required TResult orElse(),
   }) {
     if (kanbanListReordered != null) {
@@ -575,12 +599,135 @@ abstract class _KanbanListReordered implements KanbanEvent {
 }
 
 /// @nodoc
+abstract class _$$SaveImplCopyWith<$Res> {
+  factory _$$SaveImplCopyWith(
+          _$SaveImpl value, $Res Function(_$SaveImpl) then) =
+      __$$SaveImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SaveImplCopyWithImpl<$Res>
+    extends _$KanbanEventCopyWithImpl<$Res, _$SaveImpl>
+    implements _$$SaveImplCopyWith<$Res> {
+  __$$SaveImplCopyWithImpl(_$SaveImpl _value, $Res Function(_$SaveImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of KanbanEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SaveImpl implements _Save {
+  const _$SaveImpl();
+
+  @override
+  String toString() {
+    return 'KanbanEvent.save()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SaveImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int oldItemIndex, int oldListIndex,
+            int newItemIndex, int newListIndex)
+        kanbanItemReordered,
+    required TResult Function(int oldListIndex, int newListIndex)
+        kanbanListReordered,
+    required TResult Function() save,
+  }) {
+    return save();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int oldItemIndex, int oldListIndex, int newItemIndex,
+            int newListIndex)?
+        kanbanItemReordered,
+    TResult? Function(int oldListIndex, int newListIndex)? kanbanListReordered,
+    TResult? Function()? save,
+  }) {
+    return save?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int oldItemIndex, int oldListIndex, int newItemIndex,
+            int newListIndex)?
+        kanbanItemReordered,
+    TResult Function(int oldListIndex, int newListIndex)? kanbanListReordered,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (save != null) {
+      return save();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_KanbanItemReordered value) kanbanItemReordered,
+    required TResult Function(_KanbanListReordered value) kanbanListReordered,
+    required TResult Function(_Save value) save,
+  }) {
+    return save(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_KanbanItemReordered value)? kanbanItemReordered,
+    TResult? Function(_KanbanListReordered value)? kanbanListReordered,
+    TResult? Function(_Save value)? save,
+  }) {
+    return save?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_KanbanItemReordered value)? kanbanItemReordered,
+    TResult Function(_KanbanListReordered value)? kanbanListReordered,
+    TResult Function(_Save value)? save,
+    required TResult orElse(),
+  }) {
+    if (save != null) {
+      return save(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Save implements KanbanEvent {
+  const factory _Save() = _$SaveImpl;
+}
+
+/// @nodoc
 mixin _$KanbanState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<InnerList> innerList) kanbanBoard,
+    required TResult Function(List<InnerListModel> innerList) kanbanBoard,
     required TResult Function(String errorMessage) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -588,7 +735,7 @@ mixin _$KanbanState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<InnerList> innerList)? kanbanBoard,
+    TResult? Function(List<InnerListModel> innerList)? kanbanBoard,
     TResult? Function(String errorMessage)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -596,7 +743,7 @@ mixin _$KanbanState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<InnerList> innerList)? kanbanBoard,
+    TResult Function(List<InnerListModel> innerList)? kanbanBoard,
     TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) =>
@@ -692,7 +839,7 @@ class _$InitialImpl extends _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<InnerList> innerList) kanbanBoard,
+    required TResult Function(List<InnerListModel> innerList) kanbanBoard,
     required TResult Function(String errorMessage) error,
   }) {
     return initial();
@@ -703,7 +850,7 @@ class _$InitialImpl extends _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<InnerList> innerList)? kanbanBoard,
+    TResult? Function(List<InnerListModel> innerList)? kanbanBoard,
     TResult? Function(String errorMessage)? error,
   }) {
     return initial?.call();
@@ -714,7 +861,7 @@ class _$InitialImpl extends _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<InnerList> innerList)? kanbanBoard,
+    TResult Function(List<InnerListModel> innerList)? kanbanBoard,
     TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) {
@@ -810,7 +957,7 @@ class _$LoadingImpl extends _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<InnerList> innerList) kanbanBoard,
+    required TResult Function(List<InnerListModel> innerList) kanbanBoard,
     required TResult Function(String errorMessage) error,
   }) {
     return loading();
@@ -821,7 +968,7 @@ class _$LoadingImpl extends _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<InnerList> innerList)? kanbanBoard,
+    TResult? Function(List<InnerListModel> innerList)? kanbanBoard,
     TResult? Function(String errorMessage)? error,
   }) {
     return loading?.call();
@@ -832,7 +979,7 @@ class _$LoadingImpl extends _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<InnerList> innerList)? kanbanBoard,
+    TResult Function(List<InnerListModel> innerList)? kanbanBoard,
     TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) {
@@ -891,7 +1038,7 @@ abstract class _$$KanbanBoardImplCopyWith<$Res> {
           _$KanbanBoardImpl value, $Res Function(_$KanbanBoardImpl) then) =
       __$$KanbanBoardImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<InnerList> innerList});
+  $Res call({List<InnerListModel> innerList});
 }
 
 /// @nodoc
@@ -913,7 +1060,7 @@ class __$$KanbanBoardImplCopyWithImpl<$Res>
       innerList: null == innerList
           ? _value._innerList
           : innerList // ignore: cast_nullable_to_non_nullable
-              as List<InnerList>,
+              as List<InnerListModel>,
     ));
   }
 }
@@ -921,13 +1068,13 @@ class __$$KanbanBoardImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KanbanBoardImpl extends _KanbanBoard {
-  const _$KanbanBoardImpl({required final List<InnerList> innerList})
+  const _$KanbanBoardImpl({required final List<InnerListModel> innerList})
       : _innerList = innerList,
         super._();
 
-  final List<InnerList> _innerList;
+  final List<InnerListModel> _innerList;
   @override
-  List<InnerList> get innerList {
+  List<InnerListModel> get innerList {
     if (_innerList is EqualUnmodifiableListView) return _innerList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_innerList);
@@ -964,7 +1111,7 @@ class _$KanbanBoardImpl extends _KanbanBoard {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<InnerList> innerList) kanbanBoard,
+    required TResult Function(List<InnerListModel> innerList) kanbanBoard,
     required TResult Function(String errorMessage) error,
   }) {
     return kanbanBoard(innerList);
@@ -975,7 +1122,7 @@ class _$KanbanBoardImpl extends _KanbanBoard {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<InnerList> innerList)? kanbanBoard,
+    TResult? Function(List<InnerListModel> innerList)? kanbanBoard,
     TResult? Function(String errorMessage)? error,
   }) {
     return kanbanBoard?.call(innerList);
@@ -986,7 +1133,7 @@ class _$KanbanBoardImpl extends _KanbanBoard {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<InnerList> innerList)? kanbanBoard,
+    TResult Function(List<InnerListModel> innerList)? kanbanBoard,
     TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) {
@@ -1035,11 +1182,11 @@ class _$KanbanBoardImpl extends _KanbanBoard {
 }
 
 abstract class _KanbanBoard extends KanbanState {
-  const factory _KanbanBoard({required final List<InnerList> innerList}) =
+  const factory _KanbanBoard({required final List<InnerListModel> innerList}) =
       _$KanbanBoardImpl;
   const _KanbanBoard._() : super._();
 
-  List<InnerList> get innerList;
+  List<InnerListModel> get innerList;
 
   /// Create a copy of KanbanState
   /// with the given fields replaced by the non-null parameter values.
@@ -1119,7 +1266,7 @@ class _$ErrorImpl extends _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<InnerList> innerList) kanbanBoard,
+    required TResult Function(List<InnerListModel> innerList) kanbanBoard,
     required TResult Function(String errorMessage) error,
   }) {
     return error(errorMessage);
@@ -1130,7 +1277,7 @@ class _$ErrorImpl extends _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<InnerList> innerList)? kanbanBoard,
+    TResult? Function(List<InnerListModel> innerList)? kanbanBoard,
     TResult? Function(String errorMessage)? error,
   }) {
     return error?.call(errorMessage);
@@ -1141,7 +1288,7 @@ class _$ErrorImpl extends _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<InnerList> innerList)? kanbanBoard,
+    TResult Function(List<InnerListModel> innerList)? kanbanBoard,
     TResult Function(String errorMessage)? error,
     required TResult orElse(),
   }) {

@@ -8,14 +8,14 @@ class KanbanState with _$KanbanState {
   const factory KanbanState.loading() = _Loading;
 
   const factory KanbanState.kanbanBoard({
-    required List<InnerList> innerList,
+    required List<InnerListModel> innerList,
   }) = _KanbanBoard;
 
   const factory KanbanState.error({
     required String errorMessage,
   }) = _Error;
 
-  List<InnerList>? get innerLists {
+  List<InnerListModel>? get innerLists {
     return mapOrNull(
       kanbanBoard: (value) => value.innerList,
     );

@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dzheglo_flutter_kanban/data/repositories/kanban_repo/i_kanban_repo.dart';
+import 'package:dzheglo_flutter_kanban/models/inner_list_model/inner_list_model.dart';
 import 'package:dzheglo_flutter_kanban/models/row_model/row_model.dart';
-import 'package:dzheglo_flutter_kanban/pages/kanban_page/kanvan_page.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'kanban_event.dart';
@@ -16,10 +16,9 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
     on<KanbanEvent>((event, emit) async {
       await event.map(
           started: (_) => _started(emit, _),
-          kanbanItemReordered: (_KanbanItemReordered value) =>
-              _kanbanItemReordered(emit, value),
-          kanbanListReordered: (_KanbanListReordered value) =>
-              _kanbanListReordered(emit, value));
+          kanbanItemReordered: (value) => _kanbanItemReordered(emit, value),
+          kanbanListReordered: (value) => _kanbanListReordered(emit, value),
+          save: (_) => _save(emit, _));
     });
   }
 
@@ -28,7 +27,7 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
     try {
       final response = await _repository.postData();
 
-      List<InnerList> innerList = _createKanbanLists(response.rows);
+      List<InnerListModel> innerList = _createKanbanLists(response.rows);
 
       emit(KanbanState.kanbanBoard(innerList: innerList));
     } catch (e) {
@@ -38,12 +37,12 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
 
   FutureOr<void> _kanbanItemReordered(
       Emitter<KanbanState> emit, _KanbanItemReordered value) async {
-    final List<InnerList>? currentInnerLists = state.innerLists;
+    final List<InnerListModel>? currentInnerLists = state.innerLists;
 
     if (currentInnerLists != null) {
-      List<InnerList> updatedInnerLists = List.from(currentInnerLists);
+      List<InnerListModel> updatedInnerLists = List.from(currentInnerLists);
 
-      InnerList oldList = updatedInnerLists[value.oldListIndex];
+      InnerListModel oldList = updatedInnerLists[value.oldListIndex];
 
       List<RowModel> oldChildren = List.from(oldList.children);
 
@@ -55,7 +54,7 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
         updatedInnerLists[value.oldListIndex] =
             oldList.copyWith(children: oldChildren);
       } else {
-        InnerList newList = updatedInnerLists[value.newListIndex];
+        InnerListModel newList = updatedInnerLists[value.newListIndex];
 
         List<RowModel> newChildren = List.from(newList.children);
 
@@ -75,21 +74,25 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
 
   FutureOr<void> _kanbanListReordered(
       Emitter<KanbanState> emit, _KanbanListReordered value) async {
-    final List<InnerList>? currentInnerLists = state.innerLists;
+    final List<InnerListModel>? currentInnerLists = state.innerLists;
 
     if (currentInnerLists != null) {
-      List<InnerList> updatedInnerLists = List.from(currentInnerLists);
+      List<InnerListModel> updatedInnerLists = List.from(currentInnerLists);
 
-      InnerList movedList = updatedInnerLists.removeAt(value.oldListIndex);
+      InnerListModel movedList = updatedInnerLists.removeAt(value.oldListIndex);
 
       updatedInnerLists.insert(value.newListIndex, movedList);
 
       emit(KanbanState.kanbanBoard(innerList: updatedInnerLists));
     }
   }
+
+  FutureOr<void> _save(Emitter<KanbanState> emit, _Save _save) async {
+    
+  }
 }
 
-List<InnerList> _createKanbanLists(List<RowModel> rows) {
+List<InnerListModel> _createKanbanLists(List<RowModel> rows) {
   final Map<int, List<RowModel>> groupedByParent = {};
 
   for (var row in rows) {
@@ -108,7 +111,7 @@ List<InnerList> _createKanbanLists(List<RowModel> rows) {
       tasks.removeAt(0);
     }
 
-    return InnerList(
+    return InnerListModel(
       name: listName,
       children: tasks,
     );
