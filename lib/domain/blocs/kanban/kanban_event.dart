@@ -2,7 +2,16 @@ part of 'kanban_bloc.dart';
 
 @freezed
 class KanbanEvent with _$KanbanEvent {
-  const factory KanbanEvent.started() = _Started;
+  const factory KanbanEvent.started({
+    String? periodStart,
+    String? periodEnd,
+    String? periodKey,
+    String? requestedMoId,
+    String? behaviourKey,
+    String? withResult,
+    String? responseFields,
+    String? authUserId,
+  }) = _Started;
   const factory KanbanEvent.kanbanItemReordered({
     required int oldItemIndex,
     required int oldListIndex,

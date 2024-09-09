@@ -1,5 +1,4 @@
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class ApiProvider {
   late String token;
@@ -8,7 +7,7 @@ class ApiProvider {
   late Map<String, String> _mainHeaders;
 
   ApiProvider({required this.appBaseUrl}) {
-    token = "";
+    token = "48ab34464a5573519725deb5865cc74c";
     _mainHeaders = {
       'Authorization': 'Bearer $token',
     };
@@ -17,8 +16,8 @@ class ApiProvider {
   Future<http.Response> postData(String uri, dynamic body,
       {Map<String, String>? headers}) async {
     try {
-      http.Response response = await http.post(Uri.parse(uri),
-          body: json.encode(body), headers: headers ?? _mainHeaders);
+      http.Response response = await http.post(Uri.parse(appBaseUrl+uri),
+          body: body, headers: headers ?? _mainHeaders);
       return response;
     } catch (e) {
       return http.Response('Error: $e', 500);

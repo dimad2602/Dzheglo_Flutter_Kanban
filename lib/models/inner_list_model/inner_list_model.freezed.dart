@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$InnerListModel {
+  int get parentId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   List<RowModel> get children => throw _privateConstructorUsedError;
 
@@ -32,7 +33,7 @@ abstract class $InnerListModelCopyWith<$Res> {
           InnerListModel value, $Res Function(InnerListModel) then) =
       _$InnerListModelCopyWithImpl<$Res, InnerListModel>;
   @useResult
-  $Res call({String name, List<RowModel> children});
+  $Res call({int parentId, String name, List<RowModel> children});
 }
 
 /// @nodoc
@@ -50,10 +51,15 @@ class _$InnerListModelCopyWithImpl<$Res, $Val extends InnerListModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? parentId = null,
     Object? name = null,
     Object? children = null,
   }) {
     return _then(_value.copyWith(
+      parentId: null == parentId
+          ? _value.parentId
+          : parentId // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -74,7 +80,7 @@ abstract class _$$InnerListModelImplCopyWith<$Res>
       __$$InnerListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<RowModel> children});
+  $Res call({int parentId, String name, List<RowModel> children});
 }
 
 /// @nodoc
@@ -90,10 +96,15 @@ class __$$InnerListModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? parentId = null,
     Object? name = null,
     Object? children = null,
   }) {
     return _then(_$InnerListModelImpl(
+      parentId: null == parentId
+          ? _value.parentId
+          : parentId // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -110,10 +121,14 @@ class __$$InnerListModelImplCopyWithImpl<$Res>
 
 class _$InnerListModelImpl extends _InnerListModel {
   const _$InnerListModelImpl(
-      {required this.name, required final List<RowModel> children})
+      {required this.parentId,
+      required this.name,
+      required final List<RowModel> children})
       : _children = children,
         super._();
 
+  @override
+  final int parentId;
   @override
   final String name;
   final List<RowModel> _children;
@@ -126,7 +141,7 @@ class _$InnerListModelImpl extends _InnerListModel {
 
   @override
   String toString() {
-    return 'InnerListModel(name: $name, children: $children)';
+    return 'InnerListModel(parentId: $parentId, name: $name, children: $children)';
   }
 
   @override
@@ -134,13 +149,15 @@ class _$InnerListModelImpl extends _InnerListModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InnerListModelImpl &&
+            (identical(other.parentId, parentId) ||
+                other.parentId == parentId) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._children, _children));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_children));
+  int get hashCode => Object.hash(runtimeType, parentId, name,
+      const DeepCollectionEquality().hash(_children));
 
   /// Create a copy of InnerListModel
   /// with the given fields replaced by the non-null parameter values.
@@ -154,10 +171,13 @@ class _$InnerListModelImpl extends _InnerListModel {
 
 abstract class _InnerListModel extends InnerListModel {
   const factory _InnerListModel(
-      {required final String name,
+      {required final int parentId,
+      required final String name,
       required final List<RowModel> children}) = _$InnerListModelImpl;
   const _InnerListModel._() : super._();
 
+  @override
+  int get parentId;
   @override
   String get name;
   @override

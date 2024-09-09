@@ -7,6 +7,7 @@ part 'inner_list_model.freezed.dart';
 class InnerListModel with _$InnerListModel {
   const InnerListModel._();
   const factory InnerListModel(
-      {required String name,
+      {required int parentId,
+        required String name,
       required List<RowModel> children}) = _InnerListModel;
 }

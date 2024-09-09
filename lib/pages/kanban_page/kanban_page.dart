@@ -38,20 +38,20 @@ class KanbanPage extends StatelessWidget {
           child: BlocBuilder<KanbanBloc, KanbanState>(
             builder: (context, state) {
               return state.when(
-                initial: () {
+                initial: (_) {
                   return const Center(
                       child: CircularProgressIndicator(
                     color: AppColors.progressIndicatorColor,
                   ));
                 },
-                error: (errorMessage) {
+                error: (innerList, errorMessage) {
                   return Center(
                       child: Text(
                     errorMessage,
                     style: const TextStyle(color: AppColors.textMainColor),
                   ));
                 },
-                loading: () {
+                loading: (innerList) {
                   return const Center(
                       child: CircularProgressIndicator(
                     color: AppColors.progressIndicatorColor,

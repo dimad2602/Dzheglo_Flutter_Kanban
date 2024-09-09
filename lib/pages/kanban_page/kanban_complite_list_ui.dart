@@ -9,6 +9,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 Widget kanbanCompleteUi(BuildContext context, List<InnerListModel> innerLists) {
   return DragAndDropLists(
+    contentsWhenEmpty: Text(
+      "Список пуст",
+      style: TextStyle(color: AppColors.textCardColor),
+    ),
     children: List.generate(
         innerLists.length, (index) => _buildList(context, index, innerLists)),
     onItemReorder: (oldItemIndex, oldListIndex, newItemIndex, newListIndex) {
@@ -27,7 +31,7 @@ Widget kanbanCompleteUi(BuildContext context, List<InnerListModel> innerLists) {
     },
     axis: Axis.horizontal,
     listWidth: 350,
-    listDraggingWidth: 350,
+    listDraggingWidth: 300,
     listDecoration: BoxDecoration(
       color: AppColors.kanbanBackgroungColor,
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
@@ -61,7 +65,7 @@ _buildList(
             child: Text(
               innerList.name,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: AppColors.textCardColor, 
+                    color: AppColors.textCardColor,
                     fontWeight: FontWeight.bold,
                   ),
             ),

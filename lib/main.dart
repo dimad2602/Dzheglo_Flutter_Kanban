@@ -1,7 +1,9 @@
-import 'package:dzheglo_flutter_kanban/pages/kanban_page/kanvan_page.dart';
+import 'package:dzheglo_flutter_kanban/locator_get.dart';
+import 'package:dzheglo_flutter_kanban/pages/kanban_page/kanban_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  setup();
   runApp(const MyApp());
 }
 
@@ -12,13 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Kanban board',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
       home: const KanbanPage(),
     );
   }
 }
-

@@ -1,3 +1,5 @@
+// ignore_for_file: equal_keys_in_map
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -12,7 +14,8 @@ part 'kanban_bloc.freezed.dart';
 
 class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
   final IKanbanRepo _repository;
-  KanbanBloc(this._repository) : super(const KanbanState.initial()) {
+  KanbanBloc(this._repository)
+      : super(const KanbanState.initial(innerList: [])) {
     on<KanbanEvent>((event, emit) async {
       await event.map(
           started: (_) => _started(emit, _),
@@ -23,56 +26,70 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
   }
 
   FutureOr<void> _started(Emitter<KanbanState> emit, _Started _started) async {
-    emit(const KanbanState.loading());
+    if (state.innerList.isNotEmpty) {
+      emit(KanbanState.loading(innerList: state.innerList));
+    }
+    emit(const KanbanState.loading(innerList: []));
     try {
-      final response = await _repository.postData();
+      final response = await _repository.postData(body: {
+        'period_start': _started.periodStart ?? '2024-06-01',
+        'period_end': _started.periodEnd ?? '2024-06-30',
+        'period_key': _started.periodKey ?? 'month',
+        'requested_mo_id': _started.requestedMoId ?? '478',
+        'behaviour_key': _started.behaviourKey ?? 'task,kpi_task',
+        'with_result': _started.withResult ?? 'false',
+        'response_fields': _started.responseFields ??
+            'name,indicator_to_mo_id,parent_id,order',
+        'auth_user_id': _started.authUserId ?? '2',
+      });
 
       List<InnerListModel> innerList = _createKanbanLists(response.rows);
 
       emit(KanbanState.kanbanBoard(innerList: innerList));
     } catch (e) {
-      emit(const KanbanState.error(errorMessage: "Ошибка postData"));
+      if (state.innerList.isNotEmpty) {
+        emit(KanbanState.error(
+            innerList: state.innerList, errorMessage: "Ошибка postData"));
+      }
+      emit(const KanbanState.error(
+          innerList: [], errorMessage: "Ошибка postData"));
     }
   }
 
   FutureOr<void> _kanbanItemReordered(
       Emitter<KanbanState> emit, _KanbanItemReordered value) async {
-    final List<InnerListModel>? currentInnerLists = state.innerLists;
 
-    if (currentInnerLists != null) {
-      List<InnerListModel> updatedInnerLists = List.from(currentInnerLists);
+    final List<InnerListModel> currentInnerLists = state.innerList;
+    List<InnerListModel> updatedInnerLists = List.from(currentInnerLists);
 
-      InnerListModel oldList = updatedInnerLists[value.oldListIndex];
-      List<RowModel> oldChildren = List.from(oldList.children);
+    InnerListModel oldList = updatedInnerLists[value.oldListIndex];
+    List<RowModel> oldChildren = List.from(oldList.children);
 
-      InnerListModel newList = updatedInnerLists[value.newListIndex];
+    InnerListModel newList = updatedInnerLists[value.newListIndex];
 
-      RowModel movedItem = oldChildren.removeAt(value.oldItemIndex);
+    RowModel movedItem = oldChildren.removeAt(value.oldItemIndex);
 
-      RowModel updatedItem = movedItem.copyWith(
-        parentId: newList.children.isNotEmpty
-            ? newList.children[0].parentId
-            : movedItem.parentId,
-        order: value.newItemIndex,
-      );
+    RowModel updatedItem = movedItem.copyWith(
+      parentId: newList.parentId, 
+      order: value.newItemIndex,
+    );
 
-      if (value.oldListIndex == value.newListIndex) {
-        oldChildren.insert(value.newItemIndex, updatedItem);
-        updatedInnerLists[value.oldListIndex] =
-            oldList.copyWith(children: oldChildren);
-      } else {
-        List<RowModel> newChildren = List.from(newList.children);
-        newChildren.insert(value.newItemIndex, updatedItem);
-        updatedInnerLists[value.oldListIndex] =
-            oldList.copyWith(children: oldChildren);
-        updatedInnerLists[value.newListIndex] =
-            newList.copyWith(children: newChildren);
-      }
-
-      updatedInnerLists = _updateOrders(updatedInnerLists);
-
-      emit(KanbanState.kanbanBoard(innerList: updatedInnerLists));
+    if (value.oldListIndex == value.newListIndex) {
+      oldChildren.insert(value.newItemIndex, updatedItem);
+      updatedInnerLists[value.oldListIndex] =
+          oldList.copyWith(children: oldChildren);
+    } else {
+      List<RowModel> newChildren = List.from(newList.children);
+      newChildren.insert(value.newItemIndex, updatedItem);
+      updatedInnerLists[value.oldListIndex] =
+          oldList.copyWith(children: oldChildren);
+      updatedInnerLists[value.newListIndex] =
+          newList.copyWith(children: newChildren);
     }
+
+    updatedInnerLists = _updateOrders(updatedInnerLists);
+
+    emit(KanbanState.kanbanBoard(innerList: updatedInnerLists));
   }
 
   List<InnerListModel> _updateOrders(List<InnerListModel> innerLists) {
@@ -91,22 +108,21 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
 
   FutureOr<void> _kanbanListReordered(
       Emitter<KanbanState> emit, _KanbanListReordered value) async {
-    final List<InnerListModel>? currentInnerLists = state.innerLists;
+    final List<InnerListModel> currentInnerLists = state.innerList;
 
-    if (currentInnerLists != null) {
-      List<InnerListModel> updatedInnerLists = List.from(currentInnerLists);
+    List<InnerListModel> updatedInnerLists = List.from(currentInnerLists);
 
-      InnerListModel movedList = updatedInnerLists.removeAt(value.oldListIndex);
+    InnerListModel movedList = updatedInnerLists.removeAt(value.oldListIndex);
 
-      updatedInnerLists.insert(value.newListIndex, movedList);
+    updatedInnerLists.insert(value.newListIndex, movedList);
 
-      emit(KanbanState.kanbanBoard(innerList: updatedInnerLists));
-    }
+    emit(KanbanState.kanbanBoard(innerList: updatedInnerLists));
   }
 
   FutureOr<void> _save(Emitter<KanbanState> emit, _Save _save) async {
     try {
-      await _repository.saveData(body: {
+      // ignore: unused_local_variable
+      final response = await _repository.postData(body: {
         'period_start': _save.periodStart,
         'period_end': _save.periodEnd,
         'period_key': _save.periodKey,
@@ -143,12 +159,13 @@ List<InnerListModel> _createKanbanLists(List<RowModel> rows) {
       tasks.removeAt(0);
     }
 
-    tasks.sort((a, b) => a.order.compareTo(b.order));
-    for (int i = 0; i < tasks.length; i++) {
-      tasks[i] = tasks[i].copyWith(order: i);
-    }
+    // tasks.sort((a, b) => a.order.compareTo(b.order));
+    // for (int i = 0; i < tasks.length; i++) {
+    //   tasks[i] = tasks[i].copyWith(order: i);
+    // }
 
     return InnerListModel(
+      parentId: tasks.first.parentId,
       name: listName,
       children: tasks,
     );
